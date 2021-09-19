@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script defer src="./app.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="form">
+             <div  id="signIn-box">
+             <h1 class="signUp-head">Sign In</h1>
+             <form>
+                  <div class="">
+                     <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+                     <input type="email" class="form-control" id="iemail" placeholder="Email" aria-describedby="emailHelp">
+                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="ipassword" placeholder="Password">
+                  </div>
+                      <button type="submit" class="btn btn-primary signIn" onclick="signIn()">SignIn</button>
+              </form>
+                  <div id="switch-signup">
+                      <p>Dont have an account?<a href="#" onclick="switchToSignUp()">Sign Up</a></p>
+                  </div>
+        </div>
+    
+              <div class=" " id="signUp-box">
+               <h1 class="signUp-head">Sign Up</h1>
+               <form>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="uemail" placeholder="Email" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+               <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="upassword" placeholder="Password">
+               </div>
+               <button type="submit" class="btn btn-primary signUp" onclick="signUp()">SignUp</button>
+               </form>
+               <div id="switch-signin">
+                   <p>already have an account <a href="#" onclick="switchToSignIn()">,Log In</a></p>
+                </div>
+                 </div>
+                </div>
+                     <div class="main-box" id="main-box">
+                        <div>
+                            <button onclick="logout()" class="logOut">Logout</button>
+                        </div>
+                        <div class="wrapper ">
+                            <h1>Pop the balloons by moving</br>your mouse over them</h1>
+                            <div id="yay-no-balloons"><span class="blue"> Level One Complete</span></div>
+                            <div id="balloon-gallery">
+                                <div class="balloon-red"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon-red"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon-red"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon-red"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon-red"></div>
+                            </div>
+                    
+                        </div>
+        </div>
+   
+    <script type="module">
+   
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log(user);
+                document.getElementById("form").style.display = "none";
+                document.getElementById("main-box").style.display = "block";
+            } else {
+                document.getElementById("form").style.display = "block";
+                document.getElementById("main-box").style.display = "none";
+            }
+        });
+      </script>
+  
+  </body>
+</body>
+
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="app.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container">
+        <div id="form">
+             <div  id="signIn-box">
+             <h1 class="signUp-head">Sign In</h1>
+             <form>
+                  <div class="">
+                     <label for="exampleInputEmail1" class="form-label">Email address</label>
+                     <input type="email" class="form-control" id="iemail" placeholder="Email" aria-describedby="emailHelp">
+                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="ipassword" placeholder="Password">
+                  </div>
+                      <button type="submit" class="btn btn-primary signIn" onclick="signIn()">SignIn</button>
+              </form>
+                  <div id="switch-signup">
+                      <p>Dont have an account?<a href="#" onclick="switchToSignUp()">Sign Up</a></p>
+                  </div>
+        </div>
+    
+              <div class=" " id="signUp-box">
+               <h1 class="signUp-head">Sign Up</h1>
+               <form>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="uemail" placeholder="Email" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+               <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="upassword" placeholder="Password">
+               </div>
+               <button type="submit" class="btn btn-primary signUp" onclick="signUp()">SignUp</button>
+               </form>
+               <div id="switch-signin">
+                   <p>already have an account <a href="#" onclick="switchToSignIn()">,Log In</a></p>
+                </div>
+                 </div>
+                </div>
+                     <div class="main-box" id="main-box">
+                        <div>
+                            <button onclick="logout()" class="logOut">Logout</button>
+                        </div>
+                        <div class="wrapper ">
+                            <h1>Pop the balloons by moving</br>your mouse over them</h1>
+                            <div id="yay-no-balloons"><span class="blue"> Level One Complete</span></div>
+                            <div id="balloon-gallery">
+                                <div class="balloon-red"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon-red"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon-red"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon-red"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon"></div>
+                                <div class="balloon-red"></div>
+                            </div>
+                    
+                        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+   
+   
+    <script type="module">
+   
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log(user);
+                document.getElementById("form").style.display = "none";
+                document.getElementById("main-box").style.display = "block";
+            } else {
+                document.getElementById("form").style.display = "block";
+                document.getElementById("main-box").style.display = "none";
+            }
+        });
+      </script>
+  
+  </body>
+</html>  -->
